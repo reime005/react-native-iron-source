@@ -23,7 +23,7 @@ import com.ironsource.mediationsdk.sdk.OfferwallListener;
  */
 public class RNIronSourceOfferwall extends ReactContextBaseJavaModule {
     public static final String E_LAYOUT_ERROR = "error";
-    private static final String TAG = "RNIronSourceOfferWall";
+    private static final String TAG = "RNIronSourceOfferwall";
     private static final int OFFER_WALL_REQUEST = 1;
 
     private ReactApplicationContext mContext;
