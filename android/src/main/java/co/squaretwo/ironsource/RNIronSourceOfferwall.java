@@ -21,7 +21,7 @@ import com.ironsource.mediationsdk.sdk.OfferwallListener;
 /**
  * Created by benyee on 11/08/2016.
  */
-public class RNIronSourceOfferWallModule extends ReactContextBaseJavaModule {
+public class RNIronSourceOfferwall extends ReactContextBaseJavaModule {
     public static final String E_LAYOUT_ERROR = "error";
     private static final String TAG = "RNIronSourceOfferWall";
     private static final int OFFER_WALL_REQUEST = 1;
@@ -29,7 +29,7 @@ public class RNIronSourceOfferWallModule extends ReactContextBaseJavaModule {
     private ReactApplicationContext mContext;
     private Intent mOfferWallIntent;
 
-    public RNIronSourceOfferWallModule(ReactApplicationContext reactContext) {
+    public RNIronSourceOfferwall(ReactApplicationContext reactContext) {
         super(reactContext);
         mContext = reactContext;
     }
