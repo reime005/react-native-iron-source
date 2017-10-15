@@ -51,7 +51,7 @@ const removeAllListeners = () => {
 module.exports = {
   ...RNIronSourceOfferwall,
   initializeOfferwall: (key, userId) => RNIronSourceOfferwall.initializeOfferwall(key, userId),
-  showRewardedVideo: () => RNIronSourceOfferwall.showOfferwall(),
+  showOfferwall: () => RNIronSourceOfferwall.showOfferwall(),
   addEventListener,
   removeEventListener,
   removeAllListeners
