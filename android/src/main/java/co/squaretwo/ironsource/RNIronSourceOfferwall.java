@@ -92,7 +92,7 @@ public class RNIronSourceOfferwall extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void showOfferWall(final Promise promise) {
+    public void showOfferwall(final Promise promise) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
