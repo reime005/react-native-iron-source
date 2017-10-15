@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B3E7B58A1CC2AC0600A0062D /* RNIronSourceRewardedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNIronSourceRewardedVideo.m */; };
-		B58FBD931E9708C0001125A5 /* IronSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58FBD921E9708C0001125A5 /* IronSource.framework */; };
+		29301F691F92B45E00929453 /* RNIronSourceOfferwall.h in Sources */ = {isa = PBXBuildFile; fileRef = 29301F681F92A70D00929453 /* RNIronSourceOfferwall.h */; };
+		29301F6A1F92B46000929453 /* RNIronSourceOfferwall.m in Sources */ = {isa = PBXBuildFile; fileRef = 29301F661F92A6E300929453 /* RNIronSourceOfferwall.m */; };
+		29301F6B1F92B46600929453 /* RNIronSourceRewardedVideo.h in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5881CC2AC0600A0062D /* RNIronSourceRewardedVideo.h */; };
+		29301F6C1F92B46A00929453 /* RNIronSourceRewardedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNIronSourceRewardedVideo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +27,11 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNIronSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNIronSource.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		29301F661F92A6E300929453 /* RNIronSourceOfferwall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNIronSourceOfferwall.m; sourceTree = "<group>"; };
+		29301F681F92A70D00929453 /* RNIronSourceOfferwall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNIronSourceOfferwall.h; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNIronSourceRewardedVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNIronSourceRewardedVideo.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNIronSourceRewardedVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNIronSourceRewardedVideo.m; sourceTree = "<group>"; };
-		B58FBD921E9708C0001125A5 /* IronSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IronSource.framework; path = ../../../../Downloads/IronSource/IronSource.framework; sourceTree = "<group>"; };
+		B58FBD921E9708C0001125A5 /* IronSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IronSource.framework; path = "../../react-native-getrich/ios/Frameworks/IronSource.framework"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +39,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B58FBD931E9708C0001125A5 /* IronSource.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +56,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				29301F681F92A70D00929453 /* RNIronSourceOfferwall.h */,
+				29301F661F92A6E300929453 /* RNIronSourceOfferwall.m */,
 				B53E8EDD1DD2A18800FBABAC /* Frameworks */,
 				B3E7B5881CC2AC0600A0062D /* RNIronSourceRewardedVideo.h */,
 				B3E7B5891CC2AC0600A0062D /* RNIronSourceRewardedVideo.m */,
@@ -124,7 +129,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E7B58A1CC2AC0600A0062D /* RNIronSourceRewardedVideo.m in Sources */,
+				29301F691F92B45E00929453 /* RNIronSourceOfferwall.h in Sources */,
+				29301F6A1F92B46000929453 /* RNIronSourceOfferwall.m in Sources */,
+				29301F6B1F92B46600929453 /* RNIronSourceRewardedVideo.h in Sources */,
+				29301F6C1F92B46A00929453 /* RNIronSourceRewardedVideo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,14 +217,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
-					"~/Documents/IronSourceSDK",
-					"$(PROJECT_DIR)/../../../ios/Frameworks",
+					"${SRCROOT}/../../../ios/Frameworks/**",
+					"${BUILT_PRODUCTS_DIR}/**",
+					"$(inherited)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../react-native/React/**",
-					"$(SRCROOT)/../../react-native/ReactCommon/**",
+					"${SRCROOT}/../../../ios/**",
+					"${BUILT_PRODUCTS_DIR}/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
@@ -229,14 +237,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
-					"~/Documents/IronSourceSDK",
-					"$(PROJECT_DIR)/../../../ios/Frameworks",
+					"${SRCROOT}/../../../ios/Frameworks/**",
+					"$(inherited)",
+					"${BUILT_PRODUCTS_DIR}/**",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../react-native/React/**",
-					"$(SRCROOT)/../../react-native/ReactCommon/**",
+					"${SRCROOT}/../../../ios/**",
+					"${BUILT_PRODUCTS_DIR}/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
