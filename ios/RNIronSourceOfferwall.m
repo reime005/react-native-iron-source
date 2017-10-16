@@ -21,7 +21,7 @@ RCT_EXPORT_METHOD(initializeOfferwall:(NSString *)appId userId:(NSString *)userI
 //
 // Show the Ad
 //
-RCT_EXPORT_METHOD(showOfferwall: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject placementName:(NSString *)placementName)
+RCT_EXPORT_METHOD(showOfferwall: (NSString *)placementName resolve:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject )
 {
     if ([IronSource hasOfferwall]) {
         NSLog(@"showOfferwall - offerwall available");
