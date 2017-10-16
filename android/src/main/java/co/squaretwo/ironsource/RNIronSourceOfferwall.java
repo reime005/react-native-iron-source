@@ -24,10 +24,8 @@ import com.ironsource.mediationsdk.sdk.OfferwallListener;
 public class RNIronSourceOfferwall extends ReactContextBaseJavaModule {
     public static final String E_LAYOUT_ERROR = "error";
     private static final String TAG = "RNIronSourceOfferwall";
-    private static final int OFFER_WALL_REQUEST = 1;
 
     private ReactApplicationContext mContext;
-    private Intent mOfferWallIntent;
 
     public RNIronSourceOfferwall(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -40,7 +38,8 @@ public class RNIronSourceOfferwall extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void initializeOfferwall(final String appId, final String userId) {
+    public void initializeOfferwall(final String appId, final String userId, final boolean debug) {
+        IronSource.setAdaptersDebug(debug);
         IronSource.setUserId(userId);
         IronSource.init(mContext.getCurrentActivity(), appId);
         IronSource.setOfferwallListener(new OfferwallListener() {
@@ -92,7 +91,13 @@ public class RNIronSourceOfferwall extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void showOfferwall(final Promise promise) {
+    public void getCredits() {
+        Log.d(TAG, "getCredits() called!");
+        IronSource.getOfferwallCredits();
+    }
+
+    @ReactMethod
+    public void showOfferwall(final String placementName, final Promise promise) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
@@ -101,7 +106,7 @@ public class RNIronSourceOfferwall extends ReactContextBaseJavaModule {
                 if (available) {
                     Log.d(TAG, "isOfferwallAvailable() = true");
                     promiseResolve(promise, null);
-                    IronSource.showOfferwall();
+                    IronSource.showOfferwall(placementName);
                 } else {
                     Log.d(TAG, "isOfferwallAvailable() = false");
                     promiseReject(promise, E_LAYOUT_ERROR, null);
