@@ -15,7 +15,6 @@
 #import <React/RCTEventDispatcher.h>
 #import <React/RCTLog.h>
 #import "IronSource/IronSource.h"
-#import "AppDelegate.h"
 
 @interface RNIronSourceOfferwall : NSObject <RCTBridgeModule, ISOfferwallDelegate>
 

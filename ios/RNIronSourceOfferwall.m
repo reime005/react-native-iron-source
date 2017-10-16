@@ -13,6 +13,7 @@ RCT_EXPORT_METHOD(initializeOfferwall:(NSString *)appId userId:(NSString *)userI
     [IronSource setOfferwallDelegate:self];
     [IronSource setUserId:userId];
     [IronSource initWithAppKey:appId];
+    
     [ISIntegrationHelper validateIntegration];
 }
 
@@ -42,7 +43,7 @@ RCT_EXPORT_METHOD(showOfferwall: (RCTPromiseResolveBlock)resolve rejecter:(RCTPr
  @param available The new offerwall availability. YES if available and ready to be shown, NO otherwise.
  */
 - (void)offerwallHasChangedAvailability:(BOOL)available {
-    [self.bridge.eventDispatcher sendDeviceEventWithName:@"offerwallHasChangedAvailability" body:available];
+    [self.bridge.eventDispatcher sendDeviceEventWithName:@"offerwallHasChangedAvailability" body:nil];
 }
 
 /**
