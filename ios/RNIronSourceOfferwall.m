@@ -39,7 +39,9 @@ RCT_EXPORT_METHOD(showOfferwall: (NSString *)placementName resolve:(RCTPromiseRe
 RCT_EXPORT_METHOD(getCredits)
 {
     NSLog(@"offerwallCredits");
-    [IronSource offerwallCredits];
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        [IronSource offerwallCredits];
+    });
 }
 
 #pragma mark delegate events
