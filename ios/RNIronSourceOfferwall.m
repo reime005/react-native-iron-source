@@ -7,12 +7,13 @@ RCT_EXPORT_MODULE();
 @synthesize bridge = _bridge;
 
 // Initialize IronSource before showing the offerwall
-RCT_EXPORT_METHOD(initializeOfferwall:(NSString *)appId userId:(NSString *)userId)
+RCT_EXPORT_METHOD(initializeOfferwall:(NSString *)appId userId:(NSString *)userId debugEnabled:(BOOL)debugEnabled)
 {
     NSLog(@"initializeOfferwall called!! with key %@ and user id %@", appId, userId);
     [IronSource setOfferwallDelegate:self];
     [IronSource setUserId:userId];
     [IronSource initWithAppKey:appId];
+    [IronSource setAdaptersDebug:debugEnabled];
     
     [ISIntegrationHelper validateIntegration];
 }
@@ -20,19 +21,25 @@ RCT_EXPORT_METHOD(initializeOfferwall:(NSString *)appId userId:(NSString *)userI
 //
 // Show the Ad
 //
-RCT_EXPORT_METHOD(showOfferwall: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(showOfferwall: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject placementName:(NSString *)placementName)
 {
     if ([IronSource hasOfferwall]) {
         NSLog(@"showOfferwall - offerwall available");
         resolve(nil);
         
         dispatch_async(dispatch_get_main_queue(), ^(void) {
-            [IronSource showOfferwallWithViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
+            [IronSource showOfferwallWithViewController:[UIApplication sharedApplication].delegate.window.rootViewController placement:placementName];
         });
     } else {
         NSLog(@"showOfferwall - offerwall unavailable");
         [RNIronSourceOfferwall rejectPromise:reject withError:nil];
     }
+}
+
+RCT_EXPORT_METHOD(getCredits)
+{
+    NSLog(@"offerwallCredits");
+    [IronSource offerwallCredits];
 }
 
 #pragma mark delegate events
@@ -43,7 +50,11 @@ RCT_EXPORT_METHOD(showOfferwall: (RCTPromiseResolveBlock)resolve rejecter:(RCTPr
  @param available The new offerwall availability. YES if available and ready to be shown, NO otherwise.
  */
 - (void)offerwallHasChangedAvailability:(BOOL)available {
-    [self.bridge.eventDispatcher sendDeviceEventWithName:@"offerwallHasChangedAvailability" body:nil];
+    if (available == YES) {
+        [self.bridge.eventDispatcher sendDeviceEventWithName:@"offerwallHasChangedAvailability" body:@"true"];
+    } else {
+        [self.bridge.eventDispatcher sendDeviceEventWithName:@"offerwallHasChangedAvailability" body:@"false"];
+    }
 }
 
 /**
